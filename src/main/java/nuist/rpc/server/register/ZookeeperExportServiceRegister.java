@@ -9,10 +9,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 
-import static com.sun.xml.internal.ws.commons.xmlutil.Converter.UTF_8;
-import static nuist.rpc.common.constants.LeisureConstant.PATH_DELIMITER;
-import static nuist.rpc.common.constants.LeisureConstant.ZK_SERVICE_PATH;
-
 /**
  * Zookeeper服务注册器，提供服务注册、服务暴露的能力
  */
@@ -52,11 +48,11 @@ public class ZookeeperExportServiceRegister extends DefaultServiceRegister {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String servicePath = ZK_SERVICE_PATH + PATH_DELIMITER + serviceName + "/service";
+        String servicePath = LeisureConstant.ZK_SERVICE_PATH + LeisureConstant.PATH_DELIMITER + serviceName + "/service";
         if (!client.exists(servicePath)) {
             client.createPersistent(servicePath, true);
         }
-        String uriPath = servicePath + PATH_DELIMITER + uri;
+        String uriPath = servicePath + LeisureConstant.PATH_DELIMITER + uri;
         if (client.exists(uriPath)) {
             client.delete(uriPath);
         }
