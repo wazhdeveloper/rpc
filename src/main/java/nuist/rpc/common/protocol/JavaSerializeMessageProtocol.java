@@ -7,9 +7,6 @@ import java.io.ObjectOutputStream;
 
 /**
  * Java序列化消息协议
- *
- * @author 东方雨倾
- * @since 1.0.0
  */
 public class JavaSerializeMessageProtocol implements MessageProtocol {
 
